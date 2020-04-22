@@ -1,0 +1,7 @@
+export const SIGNUP = 'SIGNUP';
+export const LOGIN='LOGIN';
+export const ARTICLE_CREATE='ARTICLE_CREATE';
+export const SHOW_AREA='SHOW_AREA';
+export const REMOVE_ARTICLE='REMOVE_ARTICLE'
+export const ARTICLE_LOAD='ARTICLE_LOAD'
+export const ARTICLE_UPDATE='ARTICLE_UPDATE'

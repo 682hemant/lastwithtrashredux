@@ -1,0 +1,11 @@
+.articaltitle button{
+    background-color:white;
+    border:white;
+   
+}
+.articaltitle:hover{
+    background-color: lightblue;
+    color:white;
+}
+
+       

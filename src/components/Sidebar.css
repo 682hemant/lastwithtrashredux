@@ -1,0 +1,25 @@
+.sidebar{
+    height:100vh;
+    background-color: #222831;
+   
+}
+.sidebar button{
+    background-color: #222831;
+    color:white;
+    background-color:#222831;
+    border: #222831;
+    padding-right:1rem;
+    padding-top:1rem;
+}
+ul li{
+    color:white;
+    
+}
+ul{
+    list-style-type: none;
+    padding-left:10px;
+}
+.para{
+    color:white;
+    margin-left: .5rem;
+}
