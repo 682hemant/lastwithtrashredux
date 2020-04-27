@@ -36,13 +36,13 @@ import {reset} from 'redux-form'
             <ArticalForm
             onSubmitArticle = {this.onCreateArticle}
           />
-            <div  className="continer">
+            <div  className="continer-fluid">
                 <div className="row">
 
-                    <div className="col-2 sibebar ml-0" > 
+                    <div className="col-2 sibebar " style={{paddingRight:'0'}} > 
                       <SideBar />
                       </div> 
-                      <div className="col-3 title">
+                      <div className="col-3 title " style={{paddingLeft:'0'}}>
                          {this.props.articleTitle.map(titles=>
                             <ArticleTitle 
                               id={titles.id}
@@ -50,6 +50,7 @@ import {reset} from 'redux-form'
                                showArea={()=>this.props.onShowArea(titles.id)} 
                                clicked={() => this.props.onRemovedArticle(titles.id)}      
                                EditArticle={()=>this.props.onEditArticle(titles.id)}
+                               clickStar={()=>this.props.onClickStar(titles.id)}
                                />
                              
                                )}
@@ -79,6 +80,7 @@ const mapDispatchToProps=dispatch=>{
     onRemovedArticle: id => dispatch(deleteArticle(id)),
     onEditArticle:articleId=>((dispatch({type: 'ARTICLE_LOAD', payload:{articleId}})),$('#articleForm').modal('show')),
     onUpdateArticle:values=>dispatch(articleUpdate(values)),
+    onClickStar:articleId=>dispatch({type:'ARTICLE_FAVOURITE',payload:{articleId}}),
     onResetForm:()=>dispatch(reset("articleForm"))
   }
 }

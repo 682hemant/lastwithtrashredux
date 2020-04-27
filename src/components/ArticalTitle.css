@@ -1,11 +1,18 @@
 .articaltitle button{
-    background-color:white;
+    
     border:white;
-   
+    background-color: transparent;
 }
 .articaltitle:hover{
-    background-color: lightblue;
+  
     color:white;
+    background-color: blue;
 }
-
+.heading{
+    word-break: break-all;
+}
+.articaltitle{
+    background-color: #a161bf;
+    color:black
+}
        

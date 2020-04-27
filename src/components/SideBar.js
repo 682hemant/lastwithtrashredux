@@ -2,6 +2,7 @@ import React, { Component,Fragment } from 'react'
 import './Sidebar.css'
 import $ from 'jquery'
 import {connect} from 'react-redux'
+import {NavLink}   from 'react-router-dom'
 
  class SideBar extends Component {
      constructor(props) {
@@ -32,8 +33,13 @@ import {connect} from 'react-redux'
                       <div>
                          <ul>
                                <li><button><i class="far fa-sticky-note"></i></button>all notes</li>
-                               <li><button><i class="far fa-star"></i></button>favourites</li>
-                               <li><button><i class="fas fa-trash"></i></button> trash</li>
+                               {/* <li><button><i class="far fa-id-card"></i></button>profile</li> */}
+                               <li><NavLink to="/profile" className="active"><i class="far fa-id-card"></i>profile</NavLink></li>
+                               
+                               <li><NavLink to="/favourite" className="active"><i class="far fa-star"></i>favourites</NavLink></li>
+                               {/* <li><button><i class="fas fa-trash"></i></button> trash</li> */}
+                               <li><NavLink to="/trash" className="active"><i class="fas fa-trash"></i>trash</NavLink> </li>
+                              
                          </ul>
                          </div>
                          <div>

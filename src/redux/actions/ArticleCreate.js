@@ -1,4 +1,4 @@
-import { ARTICLE_CREATE ,SHOW_AREA,REMOVE_ARTICLE,ARTICLE_UPDATE} from './actionTypes'
+import { ARTICLE_CREATE ,SHOW_AREA,REMOVE_ARTICLE,ARTICLE_UPDATE,ARTICLE_FAVOURITE} from './actionTypes'
 
 export const articleCreate = article => ({
     type:ARTICLE_CREATE,
@@ -25,4 +25,9 @@ export const articleUpdate = article => ({
     type: ARTICLE_UPDATE,
     payload: {article}
   })
-  
+//   export const articleFavourite=articleId=>{
+//       return{
+//           type:ARTICLE_FAVOURITE,
+//           payload:articleId
+//       }
+//   }

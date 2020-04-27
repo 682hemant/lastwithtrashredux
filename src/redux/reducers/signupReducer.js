@@ -3,14 +3,13 @@ import * as actionType from '../../redux/actions/actionTypes'
 const initialState = {
   users: [
     {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
-    },
-    {
       firstName: 'demo',
       lastName: 'demo',
+      email: 'demo@gmail.com',
+      password: 'demo'
+    },
+    {
+      
       emaill: 'demo@gmail.com',
       passwordd: 'demo',
     }

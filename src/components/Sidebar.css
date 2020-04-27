@@ -13,6 +13,7 @@
 }
 ul li{
     color:white;
+    padding-bottom: 1rem;
     
 }
 ul{
@@ -22,4 +23,9 @@ ul{
 .para{
     color:white;
     margin-left: .5rem;
+}
+.active{
+    color:white;
+   
+   
 }

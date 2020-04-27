@@ -1,4 +1,4 @@
-import  {ARTICLE_CREATE ,SHOW_AREA,REMOVE_ARTICLE,ARTICLE_LOAD ,ARTICLE_UPDATE} from '../actions/actionTypes'
+import  {ARTICLE_CREATE ,SHOW_AREA,REMOVE_ARTICLE,ARTICLE_LOAD ,ARTICLE_UPDATE,ARTICLE_FAVOURITE} from '../actions/actionTypes'
 import { updateObject } from './Utility'
 
 const initialState={
@@ -8,6 +8,7 @@ const initialState={
           title: 'click on + button to add article',
           description: 'Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.',
           category: 'Default',
+          favourite:false
          
         },
         {
@@ -15,6 +16,7 @@ const initialState={
           title: 'welcome to our Articles',
           description: 'Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.',
           category: 'Edited',
+          favourite:true
          
         }
       ],
@@ -30,7 +32,9 @@ const initialState={
     },
       editing:{
           id:false
-      }
+      },
+      Trash:[],
+      
       
 }
 
@@ -51,6 +55,7 @@ const ArticleReducer = (state = initialState, action) => {
                 .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" "),          
               description: action.payload.article.description,
+              favourite:false
               
             }
           ],
@@ -60,7 +65,8 @@ const ArticleReducer = (state = initialState, action) => {
         title: '',
         description: '',
         category: '',
-      }
+      },
+      
          
         }
         case SHOW_AREA:
@@ -84,9 +90,14 @@ const ArticleReducer = (state = initialState, action) => {
             article: ''
           }
           : state.showArticle
+
         return updateObject(state, {
           articles: state.articles.filter(article => article.id !== action.articleId),
-          showArticle
+          showArticle,
+          Trash:[
+            ...state.Trash,
+            state.articles.find(article => article.id === action.articleId)
+          ]
         })
       }
       case ARTICLE_UPDATE: 
@@ -121,6 +132,20 @@ const ArticleReducer = (state = initialState, action) => {
             return article.id === action.payload.articleId
           })
         }
+        case ARTICLE_FAVOURITE:
+          return{
+            ...state,
+            articles:state.articles.map(article=>{
+             
+              return article.id!==action.payload.articleId
+              ? article
+              :{
+                ...article,
+                favourite:!article.favourite
+              }
+            }
+              )
+          }
     }
         
 
